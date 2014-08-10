@@ -17,21 +17,24 @@ $db = mysql_select_db('ftfl',$connect);
 
 $query = "select count(*) from students where id = '$id' or name = '$name'";
 $result = mysql_query($query);
-if($result==0)
+if($result >= 0)
 {
     $query = "insert into students values ('$id','$name')";
     $result = mysql_query($query);
     if($result)
     {
-        echo "Data inserted, thank you";
+        echo "Data inserted, thank you<br/>";
     }
 }
 else
 {
-    echo "Data already exists";
+    echo "Data already exists<br/>";
 }
 
 ?>
+    <br/><br/>
+    <a href="student.html">Student Entry</a><br/>
+    <a href="index.html">Home</a>
 </div>
 </body>
 </html>
