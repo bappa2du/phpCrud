@@ -18,14 +18,15 @@
             $result = mysql_query($query);
                 while($row = mysql_fetch_array($result))
                 {
-                    echo "<option>".$row['name']."</option>";
+                    echo "<option value=".$row['name'].">".$row['name']."</option>";
                 }
+            echo "<br/>";
 
             ?>
         </select>
         <br/>
         Course Name:
-        <select>
+        <select multiple>
             <?php
             $connect = mysql_connect('localhost','root','');
             $db = mysql_select_db('ftfl',$connect);
@@ -33,7 +34,7 @@
             $result = mysql_query($query);
             while($row = mysql_fetch_array($result))
             {
-                echo "<option>".$row['title']."</option>";
+                echo "<option value=".$row['name'].">".$row['title']."</option>";
             }
 
             ?>

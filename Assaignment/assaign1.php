@@ -33,6 +33,7 @@
 
     ?>
     <br/><br/>
+
     <a href="student.html">Student Entry</a><br/>
     <a href="index.html">Home</a>
 </div>
