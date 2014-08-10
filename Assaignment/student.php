@@ -15,13 +15,22 @@ $name = $_REQUEST['name'];
 $connect = mysql_connect('localhost','root','');
 $db = mysql_select_db('ftfl',$connect);
 
-
-$query = "insert into students values ('$id','$name')";
+$query = "select count(*) from students where id = '$id' or name = '$name'";
 $result = mysql_query($query);
-if($result)
+if($result==0)
 {
-    echo "Data inserted, thank you";
+    $query = "insert into students values ('$id','$name')";
+    $result = mysql_query($query);
+    if($result)
+    {
+        echo "Data inserted, thank you";
+    }
 }
+else
+{
+    echo "Data already exists";
+}
+
 ?>
 </div>
 </body>
