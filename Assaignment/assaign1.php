@@ -14,18 +14,12 @@
 
     $connect = mysql_connect('localhost','root','');
     $db = mysql_select_db('ftfl',$connect);
-
-    $query = "select count(*) from students where id = '$id' or name = '$name'";
+    $query = "insert into students values ('$id','$name')";
     $result = mysql_query($query);
-    if($result >= 0)
-    {
-        $query = "insert into students values ('$id','$name')";
-        $result = mysql_query($query);
-        if($result)
+    if($result)
         {
             echo "Data inserted, thank you<br/>";
         }
-    }
     else
     {
         echo "Data already exists<br/>";
