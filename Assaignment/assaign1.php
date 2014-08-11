@@ -11,23 +11,34 @@
     <?php
 
     $name = $_REQUEST['name'];
+
     $title = $_REQUEST['title1'];
 
 
     $connect = mysql_connect('localhost','root','');
 
-    $db = mysql_select_db('ftfl',$connect)or die("Error1");
+    $db = mysql_select_db('ftfl',$connect);
 
     $query = "insert into students (name) values ('$name')";
 
-    $result = mysql_query($query) or die("Error");
+    $result = mysql_query($query);
 
-    $result = mysql_query("select id from students where name = '$name' ");
-    $result = mysql_query("select id from courses where title = '$title' ");
+     $result1 = mysql_query("select s_id from students where name = '$name' ");
 
-    $query = "insert into mapping (student_id,course_id) values ('$name','$title')";
+        $student_id = mysql_fetch_array($result1);
 
-    $result = mysql_query($query) or die("Error");
+        $a = $student_id['s_id'];
+
+        $result = mysql_query("select c_id from courses where title = '$title' ");
+
+        $course_id = mysql_fetch_array($result);
+
+        $b = $course_id['c_id'];
+
+        $query = "insert into mapping (student_id,course_id) values ('$a','$b')";
+
+        $result = mysql_query($query) or die("Error");
+
 
     if($result)
         {
