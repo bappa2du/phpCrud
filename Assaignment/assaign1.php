@@ -22,7 +22,8 @@
 
     $result = mysql_query($query) or die("Error");
 
-    $result = mysql_query("select id from students ");
+    $result = mysql_query("select id from students where name = '$name' ");
+    $result = mysql_query("select id from courses where title = '$title' ");
 
     $query = "insert into mapping (student_id,course_id) values ('$name','$title')";
 
