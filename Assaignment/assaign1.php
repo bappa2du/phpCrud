@@ -9,13 +9,25 @@
 <body>
 <div>
     <?php
-    $id = $_REQUEST['id'];
+
     $name = $_REQUEST['name'];
+    $title = $_REQUEST['title1'];
+
 
     $connect = mysql_connect('localhost','root','');
-    $db = mysql_select_db('ftfl',$connect);
-    $query = "insert into students values ('$id','$name')";
-    $result = mysql_query($query);
+
+    $db = mysql_select_db('ftfl',$connect)or die("Error1");
+
+    $query = "insert into students (name) values ('$name')";
+
+    $result = mysql_query($query) or die("Error");
+
+    $result = mysql_query("select id from students ");
+
+    $query = "insert into mapping (student_id,course_id) values ('$name','$title')";
+
+    $result = mysql_query($query) or die("Error");
+
     if($result)
         {
             echo "Data inserted, thank you<br/>";

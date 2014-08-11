@@ -10,23 +10,10 @@
 <div>
     <form method="post" action="assaign1.php">
         Student Name:
-        <select>
-            <?php
-            $connect = mysql_connect('localhost','root','');
-            $db = mysql_select_db('ftfl',$connect);
-            $query = "select name from students";
-            $result = mysql_query($query);
-                while($row = mysql_fetch_array($result))
-                {
-                    echo "<option value=".$row['name'].">".$row['name']."</option>";
-                }
-            echo "<br/>";
-
-            ?>
-        </select>
+        <input type="text" name="name">
         <br/>
         Course Name:
-        <select multiple>
+        <select name="title1">
             <?php
             $connect = mysql_connect('localhost','root','');
             $db = mysql_select_db('ftfl',$connect);
@@ -34,7 +21,7 @@
             $result = mysql_query($query);
             while($row = mysql_fetch_array($result))
             {
-                echo "<option value=".$row['name'].">".$row['title']."</option>";
+                echo "<option>".$row['title']."</option>";
             }
 
             ?>
