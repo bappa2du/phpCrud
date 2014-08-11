@@ -12,24 +12,19 @@
 
     $name = $_REQUEST['name'];
 
-    $title = $_REQUEST['title1'];
-
-
     $connect = mysql_connect('localhost','root','');
 
     $db = mysql_select_db('ftfl',$connect);
 
-    $query = "insert into students (name) values ('$name')";
+    mysql_query("insert into students (name) values ('$name')");
 
-    $result = mysql_query($query);
+    $result = mysql_query("select s_id from students where name = '$name' ");
 
-     $result1 = mysql_query("select s_id from students where name = '$name' ");
+    $student_id = mysql_fetch_array($result);
 
-        $student_id = mysql_fetch_array($result1);
+    $a = $student_id['s_id'];
 
-        $a = $student_id['s_id'];
-
-    foreach($_REQUEST['title1'] as $course_title)
+    foreach($_REQUEST['title'] as $course_title)
     {
         $result = mysql_query("select c_id from courses where title = '$course_title' ");
 
@@ -39,16 +34,13 @@
 
         $query = "insert into mapping (student_id,course_id) values ('$a','$b')";
 
-        $result = mysql_query($query) or die("Error");
+        $result = mysql_query($query);
     }
 
-
-
-
     if($result)
-        {
-            echo "Data inserted, thank you<br/>";
-        }
+    {
+        echo "Data inserted, thank you<br/>";
+    }
     else
     {
         echo "Data already exists<br/>";

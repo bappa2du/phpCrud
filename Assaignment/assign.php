@@ -13,12 +13,15 @@
         <input type="text" name="name">
         <br/>
         Course Name:
-        <select name="title1[]" multiple>
+        <select name="title[]" multiple>
             <?php
+
             $connect = mysql_connect('localhost','root','');
+
             $db = mysql_select_db('ftfl',$connect);
-            $query = "select title from courses";
-            $result = mysql_query($query);
+
+            $result = mysql_query("select title from courses");
+
             while($row = mysql_fetch_array($result))
             {
                 echo "<option>".$row['title']."</option>";
