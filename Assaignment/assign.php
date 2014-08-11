@@ -17,11 +17,11 @@
             <?php
             $connect = mysql_connect('localhost','root','');
             $db = mysql_select_db('ftfl',$connect);
-            $query = "select id,title from courses";
+            $query = "select title from courses";
             $result = mysql_query($query);
             while($row = mysql_fetch_array($result))
             {
-                echo "<option value='".$row['id']."'>".$row['title']."</option>";
+                echo "<option>".$row['title']."</option>";
             }
 
             ?>
