@@ -29,7 +29,9 @@
 
         $a = $student_id['s_id'];
 
-        $result = mysql_query("select c_id from courses where title = '$title' ");
+    foreach($_REQUEST['title1'] as $course_title)
+    {
+        $result = mysql_query("select c_id from courses where title = '$course_title' ");
 
         $course_id = mysql_fetch_array($result);
 
@@ -38,6 +40,9 @@
         $query = "insert into mapping (student_id,course_id) values ('$a','$b')";
 
         $result = mysql_query($query) or die("Error");
+    }
+
+
 
 
     if($result)
