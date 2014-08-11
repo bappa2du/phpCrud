@@ -8,7 +8,7 @@
 
 <body>
 <div>
-    <form method="post" action="assaign1.php">
+    <form method="post" action="assignment.php">
         Student Name:
         <input type="text" name="name">
         <br/>
