@@ -9,29 +9,9 @@
 <body>
 <div>
     <?php
-    $id = $_REQUEST['id'];
-    $title = $_REQUEST['title'];
-    $code = $_REQUEST['code'];
 
-    $connect = mysql_connect('localhost','root','');
-    $db = mysql_select_db('ftfl',$connect);
-
-    $query = "select count(*) from courses where id = '$id' or title = '$title' or code = '$code'";
-    $result = mysql_query($query);
-    if($result >= 0)
-    {
-        $query = "insert into courses values ('$id','$title','$code')";
-        $result = mysql_query($query);
-        if($result)
-        {
-            echo "Course Data inserted, thank you<br/>";
-        }
-    }
-    else
-    {
-        echo "Data already exists<br/>";
-    }
-
+        require_once 'main.php';
+        course_entry();
 
     ?>
     <br/><br/>
